@@ -59,11 +59,11 @@ public class MainActivity extends ActionBarActivity {
                 //resets the name edit text
                 nameText.setText("");
 
-                //same ting but for age (age is defined in the else statement)
+                //same thing but for age (age is defined in the else statement)
                 EditText ageText = (EditText) findViewById(R.id.age);
 
-                //if the user forgets to input a name or an age the if statement catches it and
-                //displays an informative toast
+                //if the user forgets to input a name or an age, the if statement catches it and
+                //displays an informative toast (message on screen)
                 if (nameText.getText().toString().equals("") && ageText.getText().toString().equals("")) {
                     Context context = getApplicationContext();
                     CharSequence text = "Enter a name and an age";
@@ -97,8 +97,8 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View v) {
                 EditText ageLimText = (EditText) findViewById(R.id.ageLimit);
 
-                //query is name of Query, a query looks through all data
-                //for all matches to what you query for
+                //query is name of Query, a query looks through the data and finds all
+                //the matches to what you queried for
                 RealmQuery<Person> query = realm.where(Person.class);
                 RealmResults<Person> result;
 
@@ -115,7 +115,7 @@ public class MainActivity extends ActionBarActivity {
                     result = realm.allObjects(Person.class);
                 }
 
-                //defines a new array list, you can pass arrayLists through intents, not Maps
+                //defines a new array list, you can pass arrayLists, not Maps, through intents
                 ArrayList<Map<String, String>> peopleList = new ArrayList<>();
 
                 //for all person(s) (person is redefined as a person) in result it makes a
@@ -130,7 +130,8 @@ public class MainActivity extends ActionBarActivity {
                     //adds the map to the ArrayList
                     peopleList.add(people);
                 }
-                //Creates an intent, intents can pass data between Activities (classes)
+                //Creates an intent, intents can pass data between Activities (screens, generally
+                // they have a class and an XML attached to them)
                 //the put extra adds the extra stuff we're sending (ArrayList), identified
                 //by a key and the objects name
                 //start activity is needed to pass the information

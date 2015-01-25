@@ -36,8 +36,10 @@ public class DisplayListActivity extends ListActivity {
 
     public void setup() {
 
+        //List adapter makes it so you can interact with our ListView
         setListAdapter(new ListAdapter() {
             @Override
+            //TRUE CUZ THEN ITS USABLE
             public boolean areAllItemsEnabled() {
                 return true;
             }
@@ -58,12 +60,14 @@ public class DisplayListActivity extends ListActivity {
             }
 
             @Override
+            //how many things(people) you're adding to it(ListView) <-rows
             public int getCount() {
 
                 return peopleList.size();
             }
 
             @Override
+            //position of each 'person'
             public Object getItem(int position) {
 
                 return peopleList.get(position);
@@ -84,9 +88,13 @@ public class DisplayListActivity extends ListActivity {
             public View getView(int position, View convertView, ViewGroup parent) {
                 View rowView = convertView;
                 if(rowView == null) {
+                    //LayoutInflaters make an XML file into a View object
                     LayoutInflater layoutInflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                     rowView = layoutInflater.inflate(R.layout.rows, parent, false);
                 }
+                //creates a map containing names and ages, gets their position (so that each one
+                //has its own identity) then sets the names/ages to their respective textView
+                //then they show up in two lists. same position -> same line
                 Map<String, String> people = (Map<String, String>)getItem(position);
                 ((TextView)rowView.findViewById(R.id.leftList)).setText(people.get("name"));
                 ((TextView)rowView.findViewById(R.id.rightList)).setText(people.get("age"));
